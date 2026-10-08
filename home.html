@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Siri & Ravi ❤️</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f7, #ffe0ed);
+            color: #18213d;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            height: 62px;
+            padding: 0 45px;
+
+            background: linear-gradient(
+                90deg,
+                #d90068,
+                #ed126f,
+                #d90068
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: white;
+            font-family: "Pacifico", cursive;
+            font-size: 28px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+
+            padding: 21px 0;
+        }
+
+        .nav-links a:hover {
+            color: #ffe5f2;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+            bottom: 7px;
+            left: 0;
+            right: 0;
+
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+        }
+
+        .logout-btn {
+            background: white;
+            color: #d90068;
+
+            border: none;
+            padding: 10px 18px;
+
+            border-radius: 13px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #ffe4f0;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 400px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 35px 10%;
+
+            background:
+                linear-gradient(
+                    rgba(255, 205, 220, 0.05),
+                    rgba(255, 192, 214, 0.05)
+                ),
+                url("hands.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            margin: 0;
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+            font-size: 52px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: #d41465;
+
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .hero-heart {
+            position: absolute;
+            right: 35%;
+            top: 55px;
+
+            color: #ed126f;
+            font-size: 45px;
+        }
+
+
+        /* =========================
+           PROFILE AREA
+        ========================== */
+
+        .top-section {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 1fr;
+
+            gap: 15px;
+
+            max-width: 1100px;
+
+            margin: 14px auto 20px;
+
+            padding: 0 15px;
+        }
+
+        .profile-card,
+        .about-card {
+
+            background: rgba(255,255,255,0.9);
+
+            border-radius: 14px;
+
+            padding: 15px;
+
+            box-shadow: 0 3px 15px rgba(220, 30, 110, 0.15);
+
+            border: 1px solid #ffd0e2;
+        }
+
+
+        /* PROFILE */
+
+        .profile-inner {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .profile-card img {
+
+            width: 130px;
+            height: 165px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            border: 3px solid #ffb5d1;
+
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-info h2 {
+
+            margin: 0 0 12px;
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 23px;
+        }
+
+        .profile-info p {
+
+            margin: 7px 0;
+
+            font-size: 12px;
+        }
+
+        .profile-info b {
+            color: #202744;
+        }
+
+
+        /* ABOUT */
+
+        .about-card {
+            text-align: left;
+        }
+
+        .about-card h2 {
+
+            margin: 0 0 10px;
+
+            text-align: center;
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 25px;
+        }
+
+        .about-card p {
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .about-quote {
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 17px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           SECTION COMMON
+        ========================== */
+
+        .section {
+
+            max-width: 1100px;
+
+            margin: 20px auto;
+
+            padding: 15px 25px 22px;
+
+            background: rgba(255, 235, 244, 0.75);
+
+            border: 1px solid #ffc3da;
+
+            border-radius: 14px;
+        }
+
+        .section-title {
+
+            text-align: center;
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 27px;
+
+            margin: 0 0 18px;
+        }
+
+
+        /* =========================
+           MEMORIES
+        ========================== */
+
+        .memory-container {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 22px;
+
+            flex-wrap: wrap;
+        }
+
+        .memory-container img {
+
+            width: 175px;
+            height: 140px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            border: 3px solid white;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .memory-container img:hover {
+
+            transform: scale(1.05);
+        }
+
+        .view-btn {
+
+            display: block;
+
+            margin: 18px auto 0;
+
+            padding: 8px 18px;
+
+            background: white;
+
+            color: #d41465;
+
+            border: 1px solid #d41465;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           VIDEO SECTION
+        ========================== */
+
+        .video-container {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .video-card {
+
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .video-thumb {
+
+            height: 105px;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background: #ddd;
+        }
+
+        .video-thumb img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .play-button {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 45px;
+            height: 32px;
+
+            background: red;
+
+            border-radius: 9px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .video-title {
+
+            margin-top: 7px;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+        .video-title::before {
+
+            content: "♥";
+
+            color: #ed126f;
+
+            margin-right: 8px;
+        }
+
+
+        /* =========================
+           SOCIAL
+        ========================== */
+
+        .social-section {
+
+            max-width: 1100px;
+
+            margin: 20px auto;
+
+            padding: 20px;
+
+            text-align: center;
+
+            background: rgba(255,235,244,0.8);
+
+            border: 1px solid #ffc3da;
+
+            border-radius: 14px;
+        }
+
+        .social-section h2 {
+
+            margin: 0;
+
+            color: #d41465;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 30px;
+        }
+
+        .social-section p {
+
+            margin: 5px 0 15px;
+        }
+
+        .social-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 40px;
+        }
+
+        .social-buttons a {
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: bold;
+
+            padding: 13px 45px;
+
+            border-radius: 10px;
+
+            min-width: 165px;
+        }
+
+        .instagram {
+            background: #d81b68;
+        }
+
+        .youtube {
+            background: #f00000;
+        }
+
+        .social-buttons a:hover {
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            margin-top: 15px;
+
+            background: linear-gradient(
+                90deg,
+                #d90068,
+                #ed126f,
+                #d90068
+            );
+
+            color: white;
+
+            padding: 22px;
+
+            text-align: center;
+
+            font-family: "Pacifico", cursive;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           IMAGE POPUP
+        ========================== */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 2000;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.75);
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .modal-box {
+
+            background: white;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            max-width: 420px;
+
+            width: 90%;
+
+            position: relative;
+
+            text-align: center;
+        }
+
+        .modal-box img {
+
+            width: 100%;
+
+            max-height: 500px;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+        .close {
+
+            position: absolute;
+
+            right: 10px;
+            top: 7px;
+
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .top-section {
+                grid-template-columns: 1fr;
+            }
+
+            .video-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+                padding: 10px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 8px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                padding: 5px;
+            }
+
+            .logout-btn {
+                padding: 7px 12px;
+            }
+
+            .hero {
+                min-height: 220px;
+
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .profile-inner {
+                flex-direction: column;
+            }
+
+            .profile-card img {
+                width: 150px;
+                height: 180px;
+            }
+
+            .profile-info {
+                text-align: center;
+            }
+
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .social-buttons a {
+                width: 80%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="logo">
+            Siri & Ravi 
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#home" class="active">🏠 Home</a>
+
+            <a href="#about">❤️ About</a>
+
+            <a href="#memories">📸 Memories</a>
+
+            <a href="#videos">▶ Videos</a>
+
+            <a href="#social">◎ Social</a>
+
+        </div>
+
+        <button class="logout-btn" onclick="logout()">
+            ⇥ Logout
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Siri & Ravi ❤️
+            </h1>
+
+            <p>
+                Together is our favorite place to be 
+            </p>
+
+        </div>
+
+        <div class="hero-heart">
+            ♡
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROFILE + ABOUT
+    ========================== -->
+
+    <section class="top-section">
+
+        <!-- RAVI -->
+
+        <div class="profile-card">
+
+            <div class="profile-inner">
+
+                <img src="ravipass.jpg" alt="Ravi Photo">
+
+                <div class="profile-info">
+
+                    <h2>
+                        Ravi Rudra 👑
+                    </h2>
+
+                    <p>
+                        👤 <b>Name:</b> Ravi Rudrarapu
+                    </p>
+
+                    <p>
+                        🎂 <b>Age:</b> 30
+                    </p>
+
+                    <p>
+                        📅 <b>Date of Birth:</b> 09-07-1996
+                    </p>
+
+                    <p>
+                        💼 <b>Profession:</b> Developer
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIRI -->
+
+        <div class="profile-card">
+
+            <div class="profile-inner">
+
+                <img src="siripass.jpeg" alt="Siri Photo">
+
+                <div class="profile-info">
+
+                    <h2>
+                        Siri Rudra 👑
+                    </h2>
+
+                    <p>
+                        👤 <b>Name:</b> Siri Rudrarapu
+                    </p>
+
+                    <p>
+                        🎂 <b>Age:</b> 28
+                    </p>
+
+                    <p>
+                        📅 <b>Date of Birth:</b> 20-01-1998
+                    </p>
+
+                    <p>
+                        💼 <b>Profession:</b> Private employee
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ABOUT -->
+
+        <div class="about-card" id="about">
+
+            <h2>
+                ❤️ About Us ❤️
+            </h2>
+
+            <p>
+                Welcome to Ravi and Siri's personal website.
+            </p>
+
+            <p>
+               Ravi & Siri — ఇది ఇద్దరి పేర్లు మాత్రమే కాదు, రెండు హృదయాలు కలిసి రాసుకుంటున్న ఒక అందమైన కథ. ❤️
+
+మా ప్రయాణంలో ఎన్నో నవ్వులు, చిన్న చిన్న గొడవలు, మరెన్నో మధురమైన జ్ఞాపకాలు ఉన్నాయి. ప్రతి రోజు కలిసి గడిపే ప్రతి క్షణం మా జీవితంలో ఒక ప్రత్యేకమైన జ్ఞాపకంగా మారుతోంది.
+
+ఒకరినొకరు అర్థం చేసుకుంటూ, ఒకరి కలలకు మరొకరు తోడుగా ఉంటూ, ప్రేమతో కలిసి ముందుకు సాగడమే మా ప్రయాణం. 💕
+
+Our story is not perfect, but it is ours.
+And we wouldn't want it any other way. ❤️💍
+            </p>
+
+            <div class="about-quote">
+
+                Two hearts... One journey...<br>
+
+                Forever ❤️
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MEMORIES
+    ========================== -->
+
+    <section class="section" id="memories">
+
+        <h2 class="section-title">
+            ─── 📸 Our Memories ❤️ ───
+        </h2>
+
+        <div class="memory-container">
+
+            <img src="siri09.jpg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+                 
+
+            <img src="couple3.jpg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+            <img src="couple5.jpg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+            <img src="couple4.jpg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+            <img src="trip.jpeg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+            <img src="cafe.jpeg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+            <img src="restarent.jpeg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">
+
+
+            <img src="rings.jpeg" 
+                 alt="Memory 8" 
+                 onclick="openImage(this.src)"
+                 style="filter: blur(4px);">     
+     
+
+        </div>
+
+        <button class="view-btn"
+                onclick="document.getElementById('memories').scrollIntoView()">
+
+            View All Photos →
+
+        </button>
+
+    </section>
+
+
+    <!-- =========================
+         IMAGE POPUP
+    ========================== -->
+
+    <div class="modal" id="imageModal">
+
+        <div class="modal-box">
+
+            <button class="close"
+                    onclick="closeImage()">
+
+                ×
+
+            </button>
+
+            <img id="popupImage" src="" alt="Memory">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         WEDDING VIDEOS
+    ========================== -->
+
+    <section class="section" id="videos">
+
+        <h2 class="section-title">
+            ─── ▶️ Our Videos ❤️ ───
+        </h2>
+
+        <p style="text-align:center; margin-top:-10px;">
+            Watch our special moments
+        </p>
+
+        <div class="video-container">
+
+
+            <!-- VIDEO 1 -->
+
+            <div class="video-card"
+                  onclick="openVideo('https://youtu.be/KwUDQAwyU0k?si=5YY-5MUnvEckxefV')">
+
+                <div class="video-thumb">
+
+                    <img src="marrage.jpg"
+                         alt="Wedding Highlights">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+                <div class="video-title">
+                    Wedding Highlights
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO 2 -->
+
+            <div class="video-card"
+                 onclick="openVideo('https://youtu.be/M0JXJPSpAQw?si=F16tis6J680rksves')">
+
+                <div class="video-thumb">
+
+                    <img src="rtumb.jpg"
+                         alt="Groom Haldi">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+                <div class="video-title">
+                    Groom Haldi Ceremony
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO 3 -->
+
+            <div class="video-card"
+                 onclick="openVideo('https://youtu.be/kGV7YpGH5c0?si=ywGH_FHvKlr64dtj')">
+
+                <div class="video-thumb">
+
+                    <img src="stumb.jpg"
+                         alt="Bride Haldi">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+                <div class="video-title">
+                    Bride Haldi Ceremony
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO 4 -->
+
+            <div class="video-card"
+                 onclick="openVideo('https://youtube.com/shorts/5kR8G3A46ow?si=HzT7l8J2TD3HggJA')">
+
+                <div class="video-thumb">
+
+                    <img src="rings.jpeg"
+                         alt="engaged ">
+
+                    <div class="play-button">
+                        ▶
+                    </div>
+
+                </div>
+
+                <div class="video-title">
+                   engaged 
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOCIAL
+    ========================== -->
+
+    <section class="social-section" id="social">
+
+        <h2>
+            ◎ Follow Us ❤️
+        </h2>
+
+        <p>
+            Connect with us on Social Media
+        </p>
+
+        <div class="social-buttons">
+
+            <a
+                href="https://www.instagram.com/ravi_rudrarapu96?stkn=MzhrbnQzNHBydjU0&utm_source=qr"
+                target="_blank"
+                class="instagram">
+
+                ◎ &nbsp; Instagram
+
+            </a>
+
+
+            <a
+                href="https://www.youtube.com/@MrMrs_SiriRavi"
+                target="_blank"
+                class="youtube">
+
+                ▶ &nbsp; YouTube
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        ───── &nbsp; Siri & Ravi ❤️ &nbsp; Always & Forever ❤️ &nbsp; ─────
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* IMAGE POPUP */
+
+        function openImage(image) {
+
+            document.getElementById("popupImage").src = image;
+
+            document.getElementById("imageModal").style.display = "flex";
+
+        }
+
+
+        function closeImage() {
+
+            document.getElementById("imageModal").style.display = "none";
+
+        }
+
+
+        /* CLOSE POPUP WHEN CLICKING OUTSIDE */
+
+        document.getElementById("imageModal").addEventListener(
+            "click",
+            function(event) {
+
+                if (event.target === this) {
+
+                    closeImage();
+
+                }
+
+            }
+        );
+
+
+        /* VIDEOS */
+
+        function openVideo(url) {
+
+            window.open(url, "_blank");
+
+        }
+
+
+        /* LOGOUT */
+
+        function logout() {
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
